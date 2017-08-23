@@ -1,7 +1,7 @@
 # ChanGeom
 ChanGeom - Channel Geometry, River Width, and along-stream distance extraction from KML files. The KML files can be created in Google Earth (manual clicking along river paths) or by automatic extraction from airphotos or satellite imagery. This is a modified and enhanced version originally described in:
 
-Fisher, G.B., et al., Channel planform geometry and slopes from freely available high-spatial resolution imagery and DEM fusion: Implications for channel width scalings, erosion proxies, and fluvial signatures in tectonically active landscapes, Geomorphology (2013), http://dx.doi.org/10.1016/j.geomorph.2013.04.011
+Fisher, G.B., Bookhagen, B., Amos, C.B. (2013): Channel planform geometry and slopes from freely available high-spatial resolution imagery and DEM fusion: Implications for channel width scalings, erosion proxies, and fluvial signatures in tectonically active landscapes, Geomorphology, http://dx.doi.org/10.1016/j.geomorph.2013.04.011
 
 Please cite that manuscript when using these scripts.
 
