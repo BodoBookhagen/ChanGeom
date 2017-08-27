@@ -221,3 +221,43 @@ clear counter distance next_x next_y poop runningdistance step_x step_y stop...
 
 save(MATname, '-v7.3'); 
 exit;
+
+function is_end_point = endpoint_fcn(nhood)
+% function is_end_point = endpoint_fcn(nhood)
+
+interval1 = [0 1 0; -1 1 -1; -1 -1 -1];
+interval2 = [1 -1 -1; -1 1 -1; -1 -1 -1];
+
+for k= 1:4
+    C = bwhitmiss(nhood, rot90(interval1,k));
+    D = bwhitmiss(nhood, rot90(interval2,k));
+    if (C(2,2) == 1) || (D(2,2) == 1)
+        is_end_point = true;
+        return
+    end
+end
+is_end_point = false;
+
+function [idx1, idx0, nr1, riv_msk_fil] = riv_mask_fil(riv_msk)
+% function [idx1, idx0, nr1, riv_msk_fil] = riv_mask_fil(riv_msk)
+
+%create a filled channel
+riv_msk_fil = imfill(riv_msk, 'holes');
+%index outside channel (0) and inside channel (1) and number of channel
+%pixels
+idx1 = find(riv_msk_fil == 1); idx0 = find(riv_msk_fil == 0); nr1 = length(idx1);
+
+function g = endpoints(f)
+%function g = endpoints(f)
+%
+%ENDPOINTS computes end points of a binary image
+%taken from page 507, Digital Image Processing using Matlab by R.C.
+%Gonzales, R.E. Woods, and S.L. Eddins
+%
+% g= ENDPOINTS(F)
+persistent lut
+if isempty(lut)
+    lut = makelut(@endpoint_fcn, 3);
+end
+g = applylut(f,lut);
+
